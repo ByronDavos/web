@@ -1,6 +1,6 @@
 # My Web Project
 
-Καλώς ήρθατε στο project μας! Μπορείτε να δείτε την ιστοσελίδα live χωρίς να κατεβάσετε τον κώδικα:
+Καλώς ήρθατε στο project μας! Μπορείτε να δείτε ενα κομμάτι της σελίδας μας live χωρίς να κατεβάσετε τον κώδικα:
 
 [![Play Me](https://img.shields.io/badge/▶_PLAY_ME-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://byrondavos.github.io/web/web/front-end/)
 
