@@ -1,3 +1,9 @@
+# 🎮 My Web Project
+
+Καλώς ήρθατε στο project μου! Μπορείτε να δείτε την ιστοσελίδα live χωρίς να κατεβάσετε τον κώδικα:
+
+[![Play Me](https://img.shields.io/badge/▶_PLAY_ME-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://byrondavos.github.io/web/web/front-end/)
+
 # Σύστημα Υποστήριξης Διπλωματικών Εργασιών (Thesis Support System)
 
 ## Περιγραφή Έργου
