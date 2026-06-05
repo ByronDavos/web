@@ -1,0 +1,12 @@
+Όνομα                         | Email                                | Κωδικός (Plaintext)
+-----------------------------|--------------------------------------|----------------------
+Βαλάντω Μπακοστεργίου        | valanto.mpakostergioy@mail.gr        | uhpFXj
+Πραξιτέλης Κωτσιονοπούλου    | praxitelis.kotsionopoyloy@mail.gr    | BB8ag5
+Μαγδαληνή Ταμιωλάκης         | magdalini.tamiolakis@mail.gr         | jE1iVi
+Ελευθέριος Γκούβελος         | eleytherios.gkoyvelos@mail.gr        | CNqCT3
+Αριστείδης Αβραμίδου         | aristeidis.avramidoy@mail.gr         | 7ErivS
+Θεοδότη Τσώνης               | theodoti.tsonis@mail.gr              | TDmkaZ
+Χρυσή Θεοδωρόπουλος          | chrysi.theodoropoylos@mail.gr        | 0RrJmY
+Ρηγούλα Παπαγιάννης          | rigoyla.papagiannis@mail.gr          | CpqNK3
+Διογένης Σαμαράς             | diogenis.samaras@mail.gr             | C6HS80
+Γαλήνη Λαγοπάτης             | galini.lagopatis@mail.gr             | tg1Uli

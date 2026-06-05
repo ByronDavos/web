@@ -1,0 +1,60 @@
+/* ===== Sidebar styling ===== */
+
+.nav button {
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.nav button:hover {
+  background-color: #f0f0f0;
+}
+
+.nav button.active {
+  background-color: #ffc107;
+  color: #000;
+  font-weight: bold;
+  border-left: 4px solid #000;
+}
+
+/* ===== Λίστα διπλωματικών ===== */
+
+.list-group-item-action {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.list-group-item-action:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+  cursor: pointer;
+}
+
+/* ===== Περιορισμός ύψους λίστας για overflow ===== */
+
+#diplomatikesList, #diplomaList {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ===== Card μέσα στο περιεχόμενο ===== */
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* ===== Responsive tweaks ===== */
+
+@media (max-width: 768px) {
+  .vh-100 {
+    height: auto !important;
+  }
+
+  .col-md-3 {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .col-md-9 {
+    padding-top: 1rem;
+  }
+}

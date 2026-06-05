@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Πίνακας Ελέγχου Διδάσκοντα</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/didaskon.css"> <!-- αν φτιάξω αργότερα ξεχωριστό CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">👨‍🏫 Διδάσκων</a>
+      <div class="ms-auto">
+        <a href="../index.html" class="btn btn-sm btn-light">Αποσύνδεση</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3 bg-light border-end vh-100 p-3">
+        <h5 class="mb-4">🔽 Μενού</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <button class="btn btn-outline-primary w-100" onclick="showSection('section-themata, this')">📝 Θεματολόγιο</button>
+          </li>
+          <li class="nav-item mb-2">
+            <button class="btn btn-outline-success w-100" onclick="showSection('section-anathesi, this')">📨 Αναθέσεις</button>
+          </li>
+          <li class="nav-item mb-2">
+            <button class="btn btn-outline-dark w-100" onclick="showSection('section-diplomatikes')">📚 Οι Διπλωματικές μου</button>
+          </li>
+          <li class="nav-item mb-2">
+            <button class="btn btn-outline-warning w-100" onclick="showSection('section-proskliseis, this')">👥 Προσκλήσεις Τριμελούς</button>
+          </li>
+          <li class="nav-item mb-2">
+            <button class="btn btn-outline-info w-100" onclick="showSection('section-statistika, this')">📊 Στατιστικά</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-secondary w-100" onclick="showSection('section-diaxeirisi, this')">🗂️ Διαχείριση Διπλωματικών</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Περιεχόμενο -->
+      <div class="col-md-9 p-4">
+        
+        <!-- Sections -->
+        <!--1.ΘΕΜΑΤΟΛΟΓΙΟ-->
+        <div id="section-themata" class="content-section d-none">
+  <h3 class="mb-3">📝 Θεματολόγιο</h3>
+
+  <!-- Φόρμα δημιουργίας -->
+  <form id="topicForm" class="mb-4">
+    <div class="mb-3">
+      <label for="title" class="form-label">Τίτλος θέματος</label>
+      <input type="text" class="form-control" id="title" required>
+    </div>
+    <div class="mb-3">
+      <label for="summary" class="form-label">Περίληψη</label>
+      <textarea class="form-control" id="summary" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="pdf" class="form-label">Αρχείο PDF περιγραφής</label>
+      <input type="file" class="form-control" id="pdf" accept=".pdf">
+    </div>
+    <button type="submit" class="btn btn-success">➕ Καταχώρηση Θέματος</button>
+  </form>
+
+  <hr>
+
+  <!-- Λίστα θεμάτων -->
+  <h5>📚 Θέματα που έχετε δημιουργήσει</h5>
+  <ul class="list-group" id="topicsList">
+    <!-- JS-generated -->
+  </ul>
+</div>
+
+<!--2.ΑΝΑΘΕΣΗ ΘΕΜΑΤΟΣ-->
+        <div id="section-anathesi" class="content-section d-none">
+  <h3 class="mb-3">📨 Ανάθεση Θέματος σε Φοιτητή</h3>
+
+  <!-- Φόρμα Αναζήτησης Φοιτητή -->
+  <form id="assignmentForm" class="mb-4">
+    <div class="mb-3">
+      <label for="studentSearch" class="form-label">Αναζήτηση Φοιτητή (ΑΜ ή Ονοματεπώνυμο)</label>
+      <input type="text" class="form-control" id="studentSearch" placeholder="π.χ. 123456 ή Νίκος Παπαδόπουλος" required>
+    </div>
+
+    <!-- Τίτλος Θέματος -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Τίτλος Θέματος</label>
+        <input type="text" class="form-control" id="title" placeholder="π.χ. Συστήματα IoT στην Υγεία" required>
+      </div>
+
+      <!-- Περιγραφή -->
+      <div class="mb-3">
+        <label for="summary" class="form-label">Περίληψη Θέματος</label>
+        <textarea class="form-control" id="summary" rows="3" placeholder="Μια σύντομη περιγραφή του θέματος..." required></textarea>
+      </div>
+
+      <!-- Αρχείο PDF -->
+      <div class="mb-3">
+        <label for="pdfFile" class="form-label">Αρχείο PDF με Αναλυτική Περιγραφή (προαιρετικό)</label>
+        <input type="file" class="form-control" id="pdfFile" accept=".pdf">
+      </div>
+
+    <button type="submit" class="btn btn-primary">📌 Ανάθεση Θέματος</button>
+  </form>
+
+  <hr>
+
+  <!-- Ιστορικό Προσωρινών Αναθέσεων -->
+  <h5>🕒 Πρόσφατες Προσωρινές Αναθέσεις</h5>
+  <ul class="list-group" id="assignmentList">
+    <!-- Προστίθενται δυναμικά -->
+  </ul>
+</div>
+
+
+       <div id="section-diplomatikes" class="content-section d-none">
+  <h3 class="mb-3">📚 Οι Διπλωματικές μου</h3>
+
+  <!-- Φίλτρα -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="roleFilter" class="form-label">Ρόλος</label>
+      <select class="form-select" id="roleFilter">
+        <option value="all">Όλοι</option>
+        <option value="επιβλέπων">Ως Επιβλέπων</option>
+        <option value="μέλος">Ως Μέλος Τριμελούς</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="statusFilterD" class="form-label">Κατάσταση</label>
+      <select class="form-select" id="statusFilterD">
+        <option value="all">Όλες</option>
+        <option value="ενεργή">Ενεργή</option>
+        <option value="υπό ανάθεση">Υπό Ανάθεση</option>
+        <option value="περατωμένη">Περατωμένη</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Πίνακας -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle" id="diplomatikesTable">
+      <thead class="table-light">
+        <tr>
+          <th>Τίτλος</th>
+          <th>Φοιτητής</th>
+          <th>Κατάσταση</th>
+          <th>Ρόλος</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS -->
+      </tbody>
+    </table>
+  </div>
+
+ <div class="mt-4" id="diplomaDetailsBox">
+  <h5>Λεπτομέρειες Διπλωματικής</h5>
+  <div class="card">
+    <div class="card-body" id="diplomaDetailsContent">
+      <p class="text-muted">Επιλέξτε μια διπλωματική για να δείτε πληροφορίες.</p>
+    </div>
+  </div>
+ </div>
+
+</div>
+
+        <div id="section-proskliseis" class="content-section d-none">
+  <h3 class="mb-3">👥 Προσκλήσεις Τριμελούς Επιτροπής</h3>
+
+  <div id="invitationsList">
+    <!-- Προσθήκη από JS -->
+  </div>
+
+  <div id="actionBox" class="d-none mt-4">
+    <h5>🔎 Πρόσκληση</h5>
+    <p><strong>Φοιτητής:</strong> <span id="studentName"></span></p>
+    <p><strong>Θέμα:</strong> <span id="topicTitle"></span></p>
+    <p><strong>Ημ/νία Πρόσκλησης:</strong> <span id="invitationDate"></span></p>
+
+    <div class="mt-3">
+      <button onclick="handleAction('accepted')" class="btn btn-success me-2">✅ Αποδοχή</button>
+      <button onclick="handleAction('rejected')" class="btn btn-danger">❌ Απόρριψη</button>
+    </div>
+  </div>
+</div>
+
+        <div id="section-statistika" class="content-section d-none">
+  <h3 class="mb-3">📊 Στατιστικά</h3>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <h6>Μέσος Χρόνος Περάτωσης (μήνες)</h6>
+      <canvas id="chartTime"></canvas>
+    </div>
+    <div class="col-md-6">
+      <h6>Μέσος Βαθμός</h6>
+      <canvas id="chartGrade"></canvas>
+    </div>
+    <div class="col-md-12">
+      <h6>Σύνολο Διπλωματικών</h6>
+      <canvas id="chartCount"></canvas>
+    </div>
+  </div>
+</div>
+        <div id="section-diaxeirisi" class="content-section d-none">
+  <h3 class="mb-3">🗂️ Διαχείριση Διπλωματικών</h3>
+
+  <div class="row">
+    <div class="col-md-4">
+      <ul class="list-group" id="manageDiplomaList">
+        <!-- JS -->
+      </ul>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Ενέργειες</div>
+        <div class="card-body" id="manageDiplomaDetails">
+          <p class="text-muted">Επιλέξτε μία διπλωματική για να δείτε τις επιλογές διαχείρισης.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- Προεπιλεγμένο μήνυμα -->
+        <div id="default-message" class="text-muted">
+          <h4 id="greet">Καλωσορίσατε!</h4>
+          <p>Χρήστης: <strong data-user-fullname></strong> (<span data-user-email></span>)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script type="module" src="../assets/js/api.js"></script>
+  <script type="module" src="../assets/js/common.js"></script>
+  <script type="module">
+    import { requireAuth, setGreeting, populateUserPlaceholders } from "../assets/js/common.js";
+    // Περιορισμός πρόσβασης ανά ρόλο (π.χ. μόνο φοιτητής)
+    // βάλ’ το ανά σελίδα: ['student'] ή ['faculty'] ή ['secretariat']
+    const user = requireAuth(); // ή requireAuth(['student'])
+    setGreeting('#greet');
+    populateUserPlaceholders();
+  </script>
+  <script type="module" src="../assets/js/didaskon.js"></script>
+  <script>
+  // Εμφανίζει ένα section και κρύβει όλα τα υπόλοιπα
+  function showSection(sectionId, btnEl){
+    // κρύψε μήνυμα καλωσορίσματος
+    document.getElementById('default-message')?.classList.add('d-none');
+
+    // κρύψε όλα τα sections
+    document.querySelectorAll('.content-section').forEach(s => s.classList.add('d-none'));
+
+    // εμφάνισε το ζητούμενο
+    const sec = document.getElementById(sectionId);
+    if (sec) sec.classList.remove('d-none');
+
+    // ενεργό κουμπί στο sidebar
+    document.querySelectorAll('.nav .btn').forEach(b => b.classList.remove('active'));
+    if (btnEl) btnEl.classList.add('active');
+
+    // (προαιρετικά) ενημέρωση περιεχομένου ανά section
+    if (window.didReloadSection) window.didReloadSection(sectionId);
+  }
+</script>
+  <script>didLoad()</script>
+  <script src="../js/didaskon-dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+  const API_BASE = (window.API_BASE)
+    ? window.API_BASE
+    : (location.hostname ? `http://${location.hostname}:3000` : 'http://localhost:3000');
+
+  const token = localStorage.getItem('jwt'); // το ήδη υπάρχον JWT σου
+
+  if (token) {
+    const socket = io(API_BASE, { auth: { token } });
+    socket.on('connect', () => console.log('WS connected', socket.id));
+
+    // θα “σκάει” όταν φοιτητής στέλνει πρόσκληση σε καθηγητή
+    socket.on('invitation:new', (inv) => { /* update UI */ });
+
+    // θα “σκάει” όταν καθηγητής αποδεχθεί/απορρίψει (ενημέρωση φοιτητή/επιβλέποντα)
+    socket.on('invitation:updated', (inv) => { /* update UI */ });
+  }
+</script>
+</body>
+</html>

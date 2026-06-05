@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Σύνδεση Φοιτητή</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <main class="container" style="max-width:480px;margin:40px auto;">
+      <h1 class="mb-3">Σύνδεση Φοιτητή</h1>
+
+      <form id="studentLoginForm" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input name="email" type="email" class="form-control" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Κωδικός</label>
+          <input name="password" type="password" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Είσοδος</button>
+        <div id="loginError" class="text-danger mt-2"></div>
+      </form>
+    </main>
+
+    <!-- Δηλώνω ρητά το backend API -->
+  <script type="module">
+    window.API_BASE = 'http://127.0.0.1:3000';
+  </script>
+
+  <!-- Φόρτωση modules με ΣΧΕΤΙΚΕΣ διαδρομές -->
+  <script type="module" src="../assets/js/api.js"></script>
+  <script type="module" src="../assets/js/role-login.js"></script>
+  <script type="module">
+    import { initRoleLogin } from '../assets/js/role-login.js';
+    initRoleLogin({
+      formId: 'studentLoginForm',
+      expectedRole: 'student',
+      redirect: './foititis-dashboard.html'  // σχετική διαδρομή
+    });
+  </script>
+
+  </body>
+</html>
